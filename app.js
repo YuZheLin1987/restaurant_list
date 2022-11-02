@@ -9,6 +9,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 // route setting
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   res.render('index')
 })
