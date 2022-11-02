@@ -9,11 +9,18 @@ const port = 3000
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-// route setting
 app.use(express.static('public'))
 
+// route setting
+// index page
 app.get('/', (req, res) => {
   res.render('index', { restaurantFile: restaurantFile.results })
+})
+
+// show page
+app.get('/restaurants/:id', (req, res) => {
+  const restaurant = restaurantFile.results.find(restaurant => req.params.id === restaurant.id.toString())
+  res.render('show', { restaurant })
 })
 
 // start and listen to server
