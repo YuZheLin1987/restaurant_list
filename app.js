@@ -23,6 +23,29 @@ app.get('/restaurants/:id', (req, res) => {
   res.render('show', { restaurant })
 })
 
+// search function
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  
+  // check input validation (empty or blank space)
+  if (!keyword.trim()) {
+    res.redirect('/')
+    return
+  }
+
+  // searching with keyword
+  const filteredRestaurants = restaurantFile.results.filter(restaurant => {
+    return restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.trim().toLowerCase())
+  })
+
+  // check if there is any matched results
+  if (Array.isArray(filteredRestaurants) && filteredRestaurants.length === 0) {
+    res.render('no_match', { keyword })
+  } else {
+    res.render('index', { restaurantFile: filteredRestaurants, keyword })
+  }
+})
+
 // start and listen to server
 app.listen(port, () => {
   console.log(`This express server is running at http://localhost:${port}`)
