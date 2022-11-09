@@ -8,7 +8,7 @@ const port = 3000
 
 // use dotenv in devDependencies only
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
+  require('dotenv').config({ override: true })
 }
 
 // connect to database
