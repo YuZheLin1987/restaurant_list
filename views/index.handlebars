@@ -22,10 +22,10 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      <div class="row row-cols-sm-3">
+      <div class="row row-cols-1 row-cols-sm-3">
         {{!-- render with for loop --}}
         {{#each restaurant}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <div class="col">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}"
               alt="{{this.name}}">
@@ -40,10 +40,13 @@
                 {{this.rating}}
                 <i class="fa-solid fa-star"></i>
               </span>
-
+            </div>
+            <div class="card-footer p-3 text-end">
+              <a href="/restaurants/{{ this._id }}" class="btn btn-major">detail</a>
+              </form>
             </div>
           </div>
-        </a>
+        </div>
         {{/each}}
       </div>
     </div>
