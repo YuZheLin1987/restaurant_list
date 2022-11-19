@@ -42,8 +42,16 @@
       <a href="/" class="btn btn-major">back</a>
       <a href="/restaurants/{{restaurant._id}}/edit" class="btn btn-major m-3">edit</a>
       <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
-        <button type="submit" class="btn btn-major">delete</button>
+        <button type="submit" class="btn btn-major" onclick="confirmDelete(event)">delete</button>
       </form>
     </div>
   </div>
 </div>
+
+<script>
+  function confirmDelete(event) {
+    if (confirm('Do you really want to delete?') === false) {
+      event.preventDefault()
+    }
+  }
+</script>
