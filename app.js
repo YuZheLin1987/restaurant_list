@@ -3,7 +3,6 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const restaurantFile = require('./restaurant.json')
 const Restaurant = require('./models/restaurant')
 const app = express()
 const port = 3000
@@ -104,16 +103,20 @@ app.get('/search', (req, res) => {
   }
 
   // searching with keyword
-  const filteredRestaurants = restaurantFile.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.trim().toLowerCase())
-  })
-
-  // check if there is any matched results
-  if (Array.isArray(filteredRestaurants) && filteredRestaurants.length === 0) {
-    res.render('no_match', { keyword })
-  } else {
-    res.render('index', { restaurantFile: filteredRestaurants, keyword })
-  }
+  Restaurant.find({ $or: [
+    { "name": { "$regex": `${keyword}`, "$options": "i" } },
+    { "category": { "$regex": `${keyword}`, "$options": "i" } }
+  ] })
+    .lean()
+    .then(restaurant => {
+      // check if there is any matched results
+      if (Array.isArray(restaurant) && restaurant.length === 0) {
+        res.render('no_match', { keyword })
+      } else {
+        res.render('index', { restaurant, keyword })
+      }
+    })
+    .catch(error => console.log(error))
 })
 
 // start and listen to server
