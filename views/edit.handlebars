@@ -2,19 +2,19 @@
   <div class="m-3 row">
     <label for="name" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="name" name="name" value="{{restaurant.name}}">
+      <input type="text" class="form-control" id="name" name="name" required value="{{restaurant.name}}">
     </div>
   </div>
   <div class="m-3 row">
     <label for="name_en" class="col-sm-2 col-form-label">Name_en</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="name_en" name="name_en" value="{{restaurant.name_en}}">
+      <input type="text" class="form-control" id="name_en" name="name_en" pattern="^[a-zA-z0-9 !@#$%&]*$" title="alphanumeric and special character only " required value="{{restaurant.name_en}}">
     </div>
   </div>
   <div class="m-3 row">
     <label for="category" class="col-sm-2 col-form-label">Category</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="category" name="category" value="{{restaurant.category}}">
+      <input type="text" class="form-control" id="category" name="category" required value="{{restaurant.category}}">
     </div>
   </div>
   <div class="m-3 row">
@@ -26,31 +26,31 @@
   <div class="m-3 row">
     <label for="location" class="col-sm-2 col-form-label">Location</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="location" name="location" value="{{restaurant.location}}">
+      <input type="text" class="form-control" id="location" name="location" required value="{{restaurant.location}}">
     </div>
   </div>
   <div class="m-3 row">
     <label for="phone" class="col-sm-2 col-form-label">Phone</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="phone" name="phone" value="{{restaurant.phone}}">
+      <input type="tel" class="form-control" id="phone" name="phone" pattern="^[0-9\s]*$" required value="{{restaurant.phone}}">
     </div>
   </div>
   <div class="m-3 row">
     <label for="google_map" class="col-sm-2 col-form-label">Google Map</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="google_map" name="google_map" value="{{restaurant.google_map}}">
+      <input type="url" class="form-control" id="google_map" name="google_map" placeholder="https://www.google.com/maps/..." required value="{{restaurant.google_map}}">
     </div>
   </div>
   <div class="m-3 row">
     <label for="rating" class="col-sm-2 col-form-label">Rating</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="rating" name="rating" value="{{restaurant.rating}}">
+      <input type="number" class="form-control" id="rating" name="rating" min="1.0" max="5.0" step="0.1" required value="{{restaurant.rating}}">
     </div>
   </div>
   <div class="m-3 row">
     <label for="description" class="col-sm-2 col-form-label">Description</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="description" name="description" value="{{restaurant.description}}">
+      <input type="text" class="form-control" id="description" name="description" required value="{{restaurant.description}}">
     </div>
   </div>
   <a class="btn btn-major m-3" href="/" role="button">Abort</a>
