@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const Restaurant = require('./models/restaurant')
+const routes = require('./routes')
 const app = express()
 const port = 3000
 
@@ -39,89 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // use method-override
 app.use(methodOverride('_method'))
 
-// route setting
-// index page
-app.get('/', (req, res) => {
-  Restaurant.find()
-    .lean()
-    .then(restaurant => res.render('index', { restaurant }))
-    .catch(error => console.log(error))
-})
-
-// new page
-app.get('/restaurants/new', (req, res) => {
-  return res.render('new')
-})
-
-// create new data
-app.post('/restaurants', (req, res) => {
-  return Restaurant.create(req.body)
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-// show page
-app.get('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then(restaurant => res.render('show', { restaurant }))
-    .catch(error => console.log(error))
-})
-
-// edit page
-app.get('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then(restaurant => res.render('edit', { restaurant }))
-    .catch(error => console.log(error))
-})
-
-// save edit
-app.put('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-
-  Restaurant.findByIdAndUpdate(id, req.body)
-    .then(() => res.redirect(`/restaurants/${id}`))
-    .catch(error => console.log(error))  
-})
-
-// delete page
-app.delete('/restaurants/:id', (req, res) =>{
-  const id = req.params.id
-
-  Restaurant.findByIdAndDelete(id)
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-// search function
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  
-  // check input validation (empty or blank space)
-  if (!keyword.trim()) {
-    res.redirect('/')
-    return
-  }
-
-  // searching with keyword
-  Restaurant.find({ $or: [
-    { "name": { "$regex": `${keyword}`, "$options": "i" } },
-    { "category": { "$regex": `${keyword}`, "$options": "i" } }
-  ] })
-    .lean()
-    .then(restaurant => {
-      // check if there is any matched results
-      if (Array.isArray(restaurant) && restaurant.length === 0) {
-        res.render('no_match', { keyword })
-      } else {
-        res.render('index', { restaurant, keyword })
-      }
-    })
-    .catch(error => console.log(error))
-})
+app.use(routes)
 
 // start and listen to server
 app.listen(port, () => {
