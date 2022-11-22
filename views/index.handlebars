@@ -1,20 +1,34 @@
 {{!-- search bar --}}
 <div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
-          </div>
+  <div class="row">
+    <div class="col-md-10 col-12 mx-auto">
+      <div class="row row-cols-1 row-cols-sm-3">
+        <div class="col-3 search-bar-outer">
+          <form action="/search">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-search"></i></span>
+              <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+                value="{{keyword}}" aria-describedby="search-button">
+            </div>
+          </form>
         </div>
-      </form>
-      <h4 class="mb-2">新增餐廳：</h4>
-      <a class="btn btn-major" href="/restaurants/new" role="button">Create</a>
-    </div>
+        <div class="col-3"></div>
+        <!-- Example split danger button -->
+        <div class="col-3 btn-group dropdown-outer">
+          <button type="button" class="btn btn-major col-10">Sort</button>
+          <button type="button" class="btn btn-major col-2 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">A -> Z</a></li>
+            <li><a class="dropdown-item" href="#">Z -> A</a></li>
+            <li><a class="dropdown-item" href="#">類別</a></li>
+            <li><a class="dropdown-item" href="#">地區</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>    
   </div>
 </div>
 
