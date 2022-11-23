@@ -13,18 +13,15 @@
           </form>
         </div>
         <div class="col-3"></div>
-        <!-- Example split danger button -->
-        <div class="col-3 btn-group dropdown-outer">
-          <button type="button" class="btn btn-major col-10">Sort</button>
-          <button type="button" class="btn btn-major col-2 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
+        <div class="col-3 dropdown-center dropdown-outer">
+          <button class="btn btn-major col-12 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">A -> Z</a></li>
-            <li><a class="dropdown-item" href="#">Z -> A</a></li>
-            <li><a class="dropdown-item" href="#">類別</a></li>
-            <li><a class="dropdown-item" href="#">地區</a></li>
+            <li><a class="dropdown-item" href="/sort/asc">A -> Z</a></li>
+            <li><a class="dropdown-item" href="/sort/desc">Z -> A</a></li>
+            <li><a class="dropdown-item" href="/sort/category">類別</a></li>
+            <li><a class="dropdown-item" href="/sort/location">地區</a></li>
           </ul>
         </div>
       </div>

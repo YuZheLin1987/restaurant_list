@@ -43,5 +43,38 @@ router.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// sorting function
+router.get('/sort/asc', (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ name: 'asc' })
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+router.get('/sort/desc', (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ name: 'desc' })
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+router.get('/sort/category', (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ category: 'asc' })
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+router.get('/sort/location', (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ location: 'asc' })
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.log(error))
+})
+
 // export
 module.exports = router
