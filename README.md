@@ -1,6 +1,6 @@
 # restaurant_list
 
-![截圖 2022-11-19 下午5 12 05（2）](https://user-images.githubusercontent.com/113798606/202843875-0a7153de-cf15-4418-96ca-f39cfd10d854.png)
+![截圖 2022-11-23 下午9 29 26（2）](https://user-images.githubusercontent.com/113798606/203559420-19871191-ed8a-4990-a1ff-41c39ad7f34d.png)
 
 ## 功能
 + 瀏覽全部餐廳列表
@@ -9,6 +9,7 @@
 + 可以新增餐廳資料
 + 可以修改餐廳資料
 + 可以刪除餐廳資料
++ 餐廳排序功能(名稱、類別、地址)
 
 ## 開始使用
 
@@ -24,7 +25,7 @@ npm install
 ```
 MONGODB_URI="你的MongoDB連接字串"
 ```
-  + MACOS可直接建立檔案。WINDOWOS存擋時檔案類型請選擇 **所有檔案 / ALL FILES** ，避免建立成文字檔txt。
+  + MACOS可直接建立檔案。WINDOWSOS存擋時檔案類型請選擇 **所有檔案 / ALL FILES** ，避免建立成文字檔txt。
 5. 寫入種子資料
 ```
 npm run seed
@@ -49,3 +50,5 @@ mongodb connected!
 + Bootstrap@5.2.1
 + FontAwesome@6.2.0
 + Mongoose@5.9.7
++ Method-override@3.0.0
++ dotenv@16.0.3
