@@ -1,5 +1,6 @@
 // require packages and set variables
 const express = require('express')
+const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -19,6 +20,12 @@ app.set('view engine', 'handlebars')
 
 // static file import
 app.use(express.static('public'))
+
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // use body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
