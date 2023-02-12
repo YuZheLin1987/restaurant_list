@@ -9,6 +9,7 @@ const routes = require('./routes')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
+const usePassport = require('./config/passport')
 require('./config/mongoose')
 const app = express()
 const port = 3000
@@ -32,6 +33,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // use method-override
 app.use(methodOverride('_method'))
+
+usePassport(app)
 
 app.use(routes)
 
