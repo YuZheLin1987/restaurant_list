@@ -1,13 +1,12 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const db = require('../../config/mongoose')
 const restaurantData = require('../../restaurant.json').results
 
 // require restaurant model
 const Restaurant = require('../restaurant')
 
-// use dotenv in devDependencies only
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config({ override: true })
-}
 
 db.once('open', () => {
   console.log('mongodb connected!')
