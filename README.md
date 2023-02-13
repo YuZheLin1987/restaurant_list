@@ -1,15 +1,15 @@
 # restaurant_list
 
-![截圖 2022-11-23 下午9 29 26（2）](https://user-images.githubusercontent.com/113798606/203559420-19871191-ed8a-4990-a1ff-41c39ad7f34d.png)
+![截圖 2023-02-13 下午11 45 40（2）](https://user-images.githubusercontent.com/113798606/218505685-73df9efb-e2d0-4fc9-b06d-1179ad3da85d.png)
 
 ## 功能
 + 瀏覽全部餐廳列表
 + 瀏覽單一餐廳詳細資料
 + 可使用餐廳名稱或餐廳類別來搜尋餐廳
-+ 可以新增餐廳資料
-+ 可以修改餐廳資料
-+ 可以刪除餐廳資料
++ 可以新增、修改、刪除餐廳資料
 + 餐廳排序功能(名稱、類別、地址)
++ 登入系統可建立自己的帳號
++ 可使用臉書帳號做第三方登入
 
 ## 開始使用
 
@@ -19,13 +19,12 @@
 ```
 npm install
 ```
-4. 設定MONGODB環境變數
+4. 設定環境變數
   + 在資料夾新增.env檔案
-  + 檔案寫入下面內容
-```
-MONGODB_URI="你的MongoDB連接字串"
-```
-  + MACOS可直接建立檔案。WINDOWSOS存擋時檔案類型請選擇 **所有檔案 / ALL FILES** ，避免建立成文字檔txt。
+  + MACos可直接建立檔案。WINDOWSos存檔時檔案類型請選擇 **所有檔案 / ALL FILES** ，避免建立成文字檔txt
+  + 內容請參考.env.example，填入SKIP的部份
+  + MONGODB_URI 請輸入您的mongodb連線網址
+  + FACEBOOK 相關請到Facebook for developers 註冊應用程式，開啟登入功能。取得編號(FACEBOOK_ID)及密鑰(FACEBOOK_SECRET)
 5. 寫入種子資料
 ```
 npm run seed
@@ -52,3 +51,9 @@ mongodb connected!
 + Mongoose@5.9.7
 + Method-override@3.0.0
 + dotenv@16.0.3
++ Eexpress-session@1.17.1
++ Passport@0.4.1
++ Passport-facebook@3.0.0
++ Passport-local@1.0.0
++ Connect-flash@0.1.1
++ Bcryptjs@2.4.3
