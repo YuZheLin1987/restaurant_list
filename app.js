@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 const usePassport = require('./config/passport')
 require('./config/mongoose')
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 
 // template engine setting
@@ -24,7 +24,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
